@@ -1,6 +1,6 @@
 package com.emt.emtlabs.repository;
 
-import com.emt.emtlabs.model.Country;
+import com.emt.emtlabs.model.domain.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,8 @@
 package com.emt.emtlabs.service.domain;
 
 import com.emt.emtlabs.model.domain.Country;
+import com.emt.emtlabs.model.views.AccomodationsPerHostView;
+import com.emt.emtlabs.model.views.HostsPerCountryView;
 
 import java.util.List;
 

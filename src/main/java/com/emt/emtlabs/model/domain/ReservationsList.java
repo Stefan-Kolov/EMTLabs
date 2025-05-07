@@ -15,26 +15,25 @@ public class ReservationsList {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "user_id", unique = true)
     private User user;
 
     @ManyToMany
-    private List<Reservation> reservations = new ArrayList<>();
+    private List<Commodation> commodations = new ArrayList<>();
 
     public ReservationsList() {}
 
     public ReservationsList(User user) {
         this.user = user;
-        reservations = new ArrayList<Reservation>();
+        commodations = new ArrayList<Commodation>();
     }
 
-    public void addReservation(Reservation reservation) {
-        if (!this.reservations.contains(reservation)) {  // Prevent duplicate reservations
-            this.reservations.add(reservation);
+    public void addReservation(Commodation commodation) {
+        if (!this.commodations.contains(commodation)) {  // Prevent duplicate reservations
+            this.commodations.add(commodation);
         }
     }
 
     public void clear() {
-        this.reservations.clear();
+        this.commodations.clear();
     }
 }

@@ -3,6 +3,9 @@ package com.emt.emtlabs.web;
 import com.emt.emtlabs.dto.CreateHostDto;
 import com.emt.emtlabs.dto.DisplayHostDto;
 import com.emt.emtlabs.model.domain.Host;
+import com.emt.emtlabs.model.projections.HostProjection;
+import com.emt.emtlabs.model.views.AccomodationsPerHostView;
+import com.emt.emtlabs.model.views.HostsPerCountryView;
 import com.emt.emtlabs.service.application.HostApplicationService;
 import com.emt.emtlabs.service.domain.HostService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -17,12 +20,14 @@ import java.util.List;
 @Tag(name = "Hosts")
 public class HostController {
     private final HostApplicationService hostApplicationService;
+    private final HostService hostService;
 
-    public HostController(HostApplicationService hostApplicationService) {
+    public HostController(HostApplicationService hostApplicationService, HostService hostService) {
         this.hostApplicationService = hostApplicationService;
+        this.hostService = hostService;
     }
 
-    @Operation(summary = "Get all authors", description = "Retrieves a list of all available authors.")
+    @Operation(summary = "Get all hosts", description = "Retrieves a list of all available hosts")
     @GetMapping
     public List<DisplayHostDto> findAll(){
         return hostApplicationService.getAllHosts();
@@ -58,5 +63,15 @@ public class HostController {
         }
         hostApplicationService.deleteHost(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/by-country")
+    public List<HostsPerCountryView> getAccommodationsByHost() {
+        return hostService.getHostsPerCountry();
+    }
+
+    @GetMapping("/names")
+    public List<HostProjection> getHostProjections() {
+        return hostService.getHostProjections();
     }
 }

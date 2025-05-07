@@ -4,11 +4,9 @@ import com.emt.emtlabs.model.enumerations.Category;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Entity
-public class Reservation {
+public class Commodation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +14,7 @@ public class Reservation {
 
     private String name;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @ManyToOne
@@ -23,14 +22,11 @@ public class Reservation {
 
     private int numRooms;
 
-    @OneToMany
-    private List<Review> reviews;
-
     private boolean reserved;
 
-    public Reservation() {}
+    public Commodation() {}
 
-    public Reservation(String name, Category category, Host host, int numRooms) {
+    public Commodation(String name, Category category, Host host, int numRooms) {
         this.name = name;
         this.category = category;
         this.host = host;

@@ -2,6 +2,7 @@ package com.emt.emtlabs.service.domain.impl;
 
 import com.emt.emtlabs.model.domain.User;
 import com.emt.emtlabs.model.enumerations.Role;
+import com.emt.emtlabs.model.exceptions.InvalidUserCredentialsException;
 import com.emt.emtlabs.repository.UserRepository;
 import com.emt.emtlabs.service.domain.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,11 +37,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String username, String password) {
-        if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            throw new IllegalArgumentException("Username or password cannot be empty");
-        }
-        return userRepository.findByUsernameAndPassword(username, password)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid username or password"));
+        if (username == null || username.isEmpty() || password == null || password.isEmpty())
+            throw new IllegalArgumentException();
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException(username));
+        if (!passwordEncoder.matches(password, user.getPassword()))
+            throw new InvalidUserCredentialsException();
+        return user;
+
     }
 
     @Override

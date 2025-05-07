@@ -1,7 +1,9 @@
 package com.emt.emtlabs.service.domain.impl;
 
 import com.emt.emtlabs.model.domain.Country;
+import com.emt.emtlabs.model.views.HostsPerCountryView;
 import com.emt.emtlabs.repository.CountryRepository;
+import com.emt.emtlabs.repository.HostsPerCountryViewRepository;
 import com.emt.emtlabs.service.domain.CountryService;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.List;
 @Service
 public class CountryServiceImpl implements CountryService {
     private final CountryRepository countryRepository;
+    private final HostsPerCountryViewRepository hostsPerCountryViewRepository;
 
-    public CountryServiceImpl(CountryRepository countryRepository) {
+    public CountryServiceImpl(CountryRepository countryRepository, HostsPerCountryViewRepository hostsPerCountryViewRepository) {
         this.countryRepository = countryRepository;
+        this.hostsPerCountryViewRepository = hostsPerCountryViewRepository;
     }
 
 
@@ -49,4 +53,5 @@ public class CountryServiceImpl implements CountryService {
     public void deleteCountry(Long id) {
         countryRepository.deleteById(id);
     }
+
 }

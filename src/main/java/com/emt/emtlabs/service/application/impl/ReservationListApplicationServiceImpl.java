@@ -1,6 +1,6 @@
 package com.emt.emtlabs.service.application.impl;
 
-import com.emt.emtlabs.dto.DisplayReservationDto;
+import com.emt.emtlabs.dto.DisplayCommodationDto;
 import com.emt.emtlabs.dto.ReservationListDto;
 import com.emt.emtlabs.service.application.ReservationListApplicationService;
 import com.emt.emtlabs.service.domain.ReservationListService;
@@ -18,8 +18,8 @@ public class ReservationListApplicationServiceImpl implements ReservationListApp
     }
 
     @Override
-    public List<DisplayReservationDto> listAllReservationsInReservationList(Long reservationListId) {
-        return DisplayReservationDto.from(reservationListService.listAllReservationsInReservationsList(reservationListId));
+    public List<DisplayCommodationDto> listAllReservationsInReservationList(Long reservationListId) {
+        return DisplayCommodationDto.from(reservationListService.listAllReservationsInReservationsList(reservationListId));
     }
 
     @Override

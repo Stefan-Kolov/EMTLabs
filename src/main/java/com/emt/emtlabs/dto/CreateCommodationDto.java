@@ -4,7 +4,7 @@ import com.emt.emtlabs.model.domain.Commodation;
 import com.emt.emtlabs.model.domain.Host;
 import com.emt.emtlabs.model.enumerations.Category;
 
-public record CreateCommodationDto (String name, Category category, Long host, Integer rooms) {
+public record CreateCommodationDto (String name, Category category, Long host, Integer numRooms) {
 
 
 
@@ -19,6 +19,6 @@ public record CreateCommodationDto (String name, Category category, Long host, I
 
 
     public Commodation toReservation(Host host) {
-        return new Commodation(name,category,host,rooms);
+        return new Commodation(name,category,host,numRooms);
     }
 }

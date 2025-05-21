@@ -57,7 +57,7 @@ public class CommodationApplicationServiceImpl implements CommodationApplication
         commodation.setName(createCommodationDto.name());
         commodation.setCategory(createCommodationDto.category());
         commodation.setHost(host);
-        commodation.setNumRooms(createCommodationDto.rooms());
+        commodation.setNumRooms(createCommodationDto.numRooms());
 
         Commodation saved = commodationService.editReservation(id, commodation);
         return DisplayCommodationDto.from(saved);

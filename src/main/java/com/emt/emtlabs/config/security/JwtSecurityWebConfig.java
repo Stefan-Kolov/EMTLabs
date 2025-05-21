@@ -33,7 +33,7 @@ public class JwtSecurityWebConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));
+        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000","http://localhost:3001"));
         corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -54,7 +54,22 @@ public class JwtSecurityWebConfig {
                                                 "/swagger-ui/**",
                                                 "/v3/api-docs/**",
                                                 "/api/user/register",
-                                                "/api/user/login"
+                                                "/api/user/login",
+                                                "/api/commodations",
+                                                "/api/hosts",
+                                                "/api/countries",
+                                                "/api/commodations/add",
+                                                "/api/hosts/add",
+                                                "/api/countries/add",
+                                                "/api/countries/delete/**",
+                                                "/api/hosts/delete/**",
+                                                "/api/commodations/delete/**",
+                                                "/api/commodations/**",
+                                                "/api/hosts/**",
+                                                "/api/countries/**",
+                                                "/api/countries/edit/**",
+                                                "/api/hosts/edit/**",
+                                                "/api/commodations/edit/**"
                                         )
                                         .permitAll()
                                         .anyRequest().authenticated()

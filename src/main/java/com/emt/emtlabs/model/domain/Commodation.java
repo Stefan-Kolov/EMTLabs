@@ -1,6 +1,7 @@
 package com.emt.emtlabs.model.domain;
 
 import com.emt.emtlabs.model.enumerations.Category;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -17,10 +18,11 @@ public class Commodation {
     @Enumerated(EnumType.STRING)
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Host host;
 
-    private int numRooms;
+    private Integer numRooms;
 
     private boolean reserved;
 

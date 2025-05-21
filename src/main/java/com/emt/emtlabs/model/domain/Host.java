@@ -1,8 +1,10 @@
 package com.emt.emtlabs.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Data
 @Entity
 public class Host {
@@ -15,7 +17,8 @@ public class Host {
 
     private String surname;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Country country;
 
     public Host() {}
